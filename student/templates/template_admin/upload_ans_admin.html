@@ -1,0 +1,45 @@
+{% extends 'template_admin/adminbash.html' %}
+{% load static %}
+
+{% block main-content %}
+<fieldset style="margin-bottom: 60px" class="filed_margin">
+
+<center>
+<div class="center w-100">Edit Student Profile</div> <br>
+<hr style="color: #0b5ed7;  width: 90%;">
+
+
+{% for foo in uploadans %}
+<form method="post"  enctype="multipart/form-data" class="form1 w-50 h-50 ms-lg-5" style="border: saddlebrown solid 3px; padding: 10px; box-shadow:  5px 1px 5px 5px green; font-family: -apple-system; font-style: italic; font-weight: 400;  " >
+    {% csrf_token %}
+    <div class="form-control form w-auto" id = "filter">
+        <label class="label" for="enq_id" >Enquery ID:</label>
+        <input type="text" name = "enq_id" class="form-control form" value="{{ foo.id }}"> <br>
+
+        <label class="label" for="Enq_date">Enquiry Date:</label>
+        <input type="text" name = "rollno" class="form-control form" value="{{ foo.enq_date }}"> <br>
+
+        <label for = "collegename" class="label">Subject: </label>
+        <input type="text" name = "cname" class="form-control form" value="{{ foo.subject_name }}"> <br>
+
+        <label for = "semester" class="label">Semester: </label>
+        <input type="text" name = "semester" class="form-control form" value="{{ foo.semester  }}"> <br>
+
+        <label for = "stauss" class="label">Status: </label>
+        <input type="text" name = "statuss" class="form-control form" value="{{ foo.status }}"> <br>
+
+          <label for = "pdfupload" class="label">Upload Answer Sheet</label>
+        <input type="file" name = "pdfupload" class="form-control form"> <br>
+
+        <button type="submit" class="button btn-success">Submit </button>
+        <button type="reset" class="btn-danger">Reset</button>
+        <button><a href="{% url "anssheetupload" %}"> Go Back </a> </button>
+        </div>
+    {% endfor %}
+</form>
+
+
+</center>
+
+</fieldset>
+{% endblock main-content %}

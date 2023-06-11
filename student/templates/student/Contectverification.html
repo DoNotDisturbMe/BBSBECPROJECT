@@ -1,0 +1,36 @@
+{% extends 'student/bash.html' %}
+{% load static %}
+
+{% block main-content %}
+<fieldset style="margin-top: 110px; margin-bottom: 60px">
+<div class="container" id = "Annoucementsid">
+    {% for message in messages %}
+    <div class="message {{ message.tags }}">
+        {{ message }}
+    </div>
+{% endfor %}
+    <div class="row col-sm-12">
+        <h3 class="h3">Contact Verifications</h3>
+    </div>
+</div>
+<hr style="color: #6b130d; height: 5px; ">
+
+<div class="card">
+    {% for x in filter_user_data %}
+    <div class="container">
+    <p>Roll No: &nbsp; &nbsp; {{ x.student_roll_id }}</p>
+        <hr>
+    <p>Name: &nbsp; &nbsp; {{ x.student_name }}</p>
+        <hr>
+    <p>Program: &nbsp; &nbsp; {{ x.student_program }}</p>
+        <hr>
+    <p>Mobile No: &nbsp; &nbsp; +91 {{ x.student_mobile_no }}</p>
+        <hr>
+    <p>Email: &nbsp; &nbsp; {{ x.student_email_id }}</p>
+  </div>
+    {% endfor %}
+</div>
+
+
+</fieldset>
+{% endblock main-content %}

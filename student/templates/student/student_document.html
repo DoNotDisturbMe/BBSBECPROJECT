@@ -1,0 +1,89 @@
+{% extends 'student/bash.html' %}
+{% load static %}
+
+{% block main-content %}
+
+<fieldset style="margin-top: 110px; margin-bottom: 60px">
+<div class="container" id = "Annoucementsid">
+    {% for message in messages %}
+    <div class="message {{ message.tags }}">
+        {{ message }}
+    </div>
+{% endfor %}
+    <div class="row col-sm-12">
+        <h3 class="h3">Student Documents</h3>
+    </div>
+</div>
+<hr style="color: #6b130d; height: 5px;">
+
+<div class="container">
+    <div class="row col-sm-12">
+        <button class="collapsible col-sm-12">Detailied Marks Card</button>
+        <div class="content">
+
+    <div id = "notice">
+        <div class="row col-sm-12" id = "notifications">
+            <div id = "rednotice">
+                {% for x in Detailed_Marked_Card %}
+                <h6>{{ x.student_program }}, {{ x.student_semester }}, {{ x.year_semester }} <strong>({{ x.type }})</strong>
+                <button class="btn"><a href="{{ x.student_document_pdf.url }}" download><i class="fa fa-download"></i> Download</a></button> </h6>
+                {% endfor  %}
+            </div>
+        </div>
+    </div>
+                    </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="container">
+    <div class="row col-sm-12">
+        <button class="collapsible col-sm-12">DMC</button>
+        <div class="content">
+
+    <div id = "notice">
+        <div class="row col-sm-12" id = "notifications">
+            <div id = "rednotice">
+               {% for x in DMC %}
+                <h6>{{ x.student_program }}, {{ x.student_semester }}, {{ x.year_semester }} <strong>({{ x.type }})</strong>
+                <button class="btn"><a href="{{ x.student_document_pdf.url }}" download><i class="fa fa-download"></i> Download</a></button> </h6>
+                {% endfor  %}
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="container">
+    <div class="row col-sm-12">
+        <button class="collapsible col-sm-12">Result Tabulation</button>
+        <div class="content">
+
+    <div id = "notice">
+        <div class="row col-sm-12" id = "notifications">
+            <div id = "rednotice">
+                {% for x in Result %}
+                <h6>{{ x.student_program }}, {{ x.student_semester }}, {{ x.year_semester }} <strong>({{ x.type }})</strong>
+                <button class="btn"><a href="{{ x.student_document_pdf.url }}" download><i class="fa fa-download"></i> Download</a></button> </h6>
+                {% endfor  %}
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+
+</fieldset>
+{% endblock main-content %}
+
+

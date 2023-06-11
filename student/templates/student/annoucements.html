@@ -1,0 +1,28 @@
+{% extends 'student/bash.html' %}
+{% load static %}
+{% block main-content %}
+<fieldset style="margin-top: 110px; margin-bottom: 60px">
+<div class="container" id = "Annoucementsid">
+    {% for message in messages %}
+    <div class="message {{ message.tags }}">
+        {{ message }}
+    </div>
+{% endfor %}
+    <div class="row col-sm-12">
+        <h3 class="h3">Annoucements</h3>
+    </div>
+</div>
+<hr style="color: #6b130d; height: 5px;">
+{% for x in annou %}
+    <div id = "notice">
+        <div class="row col-sm-12" id = "notifications">
+            <div id = "rednotice">
+                <h6> {{ x.description }} {{ x.upload_at }} <strong style="color: orangered"> ({{ x.upload_at }})</strong>
+                    <a href="{{ x.document.url }}" download class="btn-success" style="font: -apple-system-body; text-decoration: none; color: black; ">Download</a>
+{#                <button class="btn" href="{{ x.document.url }}" download ><i class="fa fa-download" href="#"></i> Download</button> </h6>#}
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</fieldset>
+{% endblock main-content %}

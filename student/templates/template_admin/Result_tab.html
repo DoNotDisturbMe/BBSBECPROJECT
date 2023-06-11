@@ -1,0 +1,30 @@
+{% include 'template_admin/adminbash.html' %}
+{% load static %}
+
+{% block main-content %}
+    <fieldset style="margin-top: 110px; margin-bottom: 60px; margin-right: 80px">
+    <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="form-control " style="margin: 10px 30px 10px 30px">
+        <label for="student_id" class="label-danger">Student Roll No: </label><br>
+        <input type="text" name = "studentrollno" id = "student_id" class="form-control "> <br>
+        <label for = "student_pdf" class="label-danger">Upload Result</label><br>
+        <input type="file" name = "student_retab" class="form-control input"> <br>
+
+        <label for = "student_progam" class="label-danger">Student Program </label><br>
+        <input type="text" name = "stu_program" class="form-control input"><br>
+
+        <label for = "student_sem" class="label-danger">Student Semester</label><br>
+        <input type="text" name = "student_sem" class="form-control input"> <br>
+
+        <label for = "year_semester" class="label-danger">Year Semester</label><br>
+        <input type="datetime-local" name = "year_sem" class="form-control input"> <br>
+
+        <label for = "type" class="label-danger">Type</label><br>
+        <input type="text" name = "type" class="form-control input"><br>
+
+        <button class="button submit-button bg-success align-content-center" style="color: white; border: solid 3px white;  border-radius: 10px; text-align: center">Upload</button>
+        </div>
+    </form>
+    </fieldset>
+{% endblock %}

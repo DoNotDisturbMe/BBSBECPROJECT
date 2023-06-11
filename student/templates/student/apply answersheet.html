@@ -1,0 +1,84 @@
+{% extends 'student/bash.html' %}
+{% load static %}
+
+{% block main-content %}
+
+<fieldset style="margin-top: 110px; margin-bottom: 60px">
+{% for message in messages %}
+    <div class="message {{ message.tags }}">
+        {{ message }}
+    </div>
+{% endfor %}
+<div class="container" id = "Annoucementsid">
+    <div class="row col-sm-12">
+        <h3 class="h3">Apply  Answersheet PDF</h3>
+    </div>
+</div>
+<hr style="color: #6b130d; height: 5px;">
+<div class="container">
+    <div class="row col-sm-12">
+        <button class="collapsible col-sm-12" STYLE="font-family: -apple-system; text-align: center">ANSWER SHEET REQUEST</button>
+        <div class="content">
+            <div id = "notice">
+                <div class="row col-sm-12" id = "notifications">
+                    <div id = "rednotice">
+                        <form  method="POST" enctype="multipart/form-data" style="width: 100%" id = "queriy">
+                            {% csrf_token %}
+                            <div style="width: 100%" id="related">
+                            <select style="width: 100%; height:50px; border: 2px solid darkred; border-radius: 60px "   name = "select_semester" id = "regarding">
+                                  <option value="">Select Semester</option>
+                                    <option value="Semester 1">Semester 1</option>
+                                    <option value="Semester 2">Semester 2</option>
+                                    <option value="Semester 3">Semester 3</option>
+                                    <option value="Semester 4">Semester 4</option>
+                                    <option value="Semester 5">Semester 5</option>
+                                    <option value="Semester 6">Semester 6</option>
+                                    <option value="Semester 7">Semester 7</option>
+                                    <option value="Semester 8">Semester 8</option>
+
+                            </select>
+                            </div>
+                            <div style="width: 100%" id = "type" >
+                            <input type="text" name = "subject" id = "regarding" style="width: 100%; height:50px; border: 2px solid darkred; border-radius: 60px">
+                            </div>
+                            <div class="button_search" style="font-family: -apple-system; font-size:30px; margin-bottom: 10px">
+                                <button type="submit" style="width: 100%" class="btn btn-success">Send Request</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row col-sm-12">
+        <button class="collapsible col-sm-12" STYLE="font-family: -apple-system; text-align: center">APPROVED ANSERSHEET</button>
+        <div class="content">
+            {% for x in filter_data %}
+            <div id = "notice">
+                <div class="row col-sm-12" id = "notifications">
+                    <div id = "rednotice">
+                        <div class="reply">
+                        <div id = enquiry_idDate class="col-sm-12">Enquiry Id: {{ x.id }} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Enquiry Date: {{ x.enq_date.date }}</div>
+                        <div id = text1 class="col-sm-12"><strong style="color: black">Subject:</strong> {{ x.subject_name }} <strong style="color: red"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Semester</strong>: {{ x.semester }}
+                        </div>
+                            <div id = uni_reply class="col-sm-12"><strong style="color: black">Status: </strong> {{ x.status }}</div>
+                            {% if x.status == "Done" %}
+                         <button id = "download1" class="btn-success" style="color: white; text-align: center; border-radius: 10px; border: white solid 3px; width: 100%"><a href="{{ x.sub_pdf.url }}" download style="color: white; text-decoration: none">Download &nbsp; <i class="fa fa-download"></i></a></button>
+                            {% endif %}
+                         </div> </div>
+                {% endfor %}
+        </div>
+    </div>
+
+</div>
+</div>
+</div>
+
+</fieldset>
+{% endblock main-content %}
+
+

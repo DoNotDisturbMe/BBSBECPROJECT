@@ -1,0 +1,29 @@
+{% extends 'template_admin/adminbash.html' %}
+{% load static %}
+
+{% block main-content %}
+<fieldset style="margin-bottom: 60px" class="filed_margin">
+
+<center>
+<div class="center w-100">Question Bank </div> <br>
+    <form method="post" enctype="multipart/form-data" class="form form-control" style="width: 50%; height: auto;
+ background-color: darkgray ; font-style: italic;  font-family: -apple-system; border-radius: 15px; border-color: #6b130d; box-shadow:sienna 3.3px 2.3px 3.6px 2.6px;">
+            {% csrf_token %}
+            <label for="subnmae" class="label text-white">Subject Name: </label>
+            <input type="text" name = "subname" class="input form-control"> <br>
+            <label for="semester" class="label text-white">Semester: </label>
+            <input type="text" name = "semester" class="input form-control">  <br>
+            <label for="Branch" class="label text-white">Branch: </label>
+            <input type="text" name = "Branch" class="input form-control">  <br>
+            <label for="type" class="label text-white">Type: </label> <br>
+            <select class="select-list form-control" name="type">
+                <option>Select type......</option>
+                <option class="select-list">MST</option>
+                <option>UNIVERSITY</option>
+            </select> <br>
+            <input type="file" name="sub_pdf" class="form-control file-upload glyphicon-file">
+            <button type="submit" class="btn btn-success btn-outline-info m-5">Submit</button>
+        </form>
+</center>
+</fieldset>
+{% endblock %}

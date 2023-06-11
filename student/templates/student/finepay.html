@@ -1,0 +1,41 @@
+{% extends 'student/bash.html' %}
+{% load static %}
+
+{% block main-content %}
+<fieldset style="margin-top: 110px; margin-bottom: 60px">
+<div class="container" id = "Annoucementsid">
+    {% for message in messages %}
+    <div class="message {{ message.tags }}">
+        {{ message }}
+    </div>
+{% endfor %}
+    <div class="row col-sm-12">
+        <h3 class="h3">Fine</h3>
+    </div>
+</div>
+<hr style="color: #6b130d; height: 5px; ">
+
+<div class="card">
+    <div class="container">
+        <div class="col-sm-12" id = "photo_" style="margin-top: 10px; margin-bottom: 10px; padding-left: 10px">
+            <p>Student Details</p>
+            <div class="img" style="width:10%">
+                <img src="{% static 'student/mystatic/image/student_photo.jpg' %}" style="width: 100%; margin-bottom: 10px">
+            </div>
+            <p style="background-color: darkcyan">Name: &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp;Prince Kumar</p>
+            <p style="background-color: darkcyan">U.Roll No.: &nbsp; &nbsp; &nbsp; 2001308</p>
+            <p style="background-color: darkcyan">C.Roll No.: &nbsp; &nbsp; &nbsp; 201055</p>
+            <p style="background-color: darkcyan">Description: &nbsp; &nbsp; &nbsp; Cooking</p>
+            <button style="background-color: dodgerblue; font-family: -apple-system; height: 40px; border-top-left-radius:10px; border-bottom-right-radius:10px;border: solid 2px black ; margin-bottom: 20px; margin-left: 45px; text-align: center;color: white" role="button" href="" value="10000">Amount 10000 | Pay</button>
+
+        </div>
+
+    </div>
+
+    <div id="confirmedd">
+    <h7>Your fine is Confirmed by Account Branch</h7>
+    </div>
+</div>
+
+</fieldset>
+{% endblock main-content %}

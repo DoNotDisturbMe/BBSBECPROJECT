@@ -1,0 +1,62 @@
+{% extends 'template_admin/adminbash.html' %}
+{% load static %}
+
+{% block main-content %}
+<fieldset style="margin-bottom: 60px" class="filed_margin">
+
+<center>
+<div class="center w-100">Create New Student Profile</div> <br>
+<hr style="color: #0b5ed7;  width: 90%;">
+
+
+
+<form method="post" enctype="multipart/form-data" class="form1 w-50 h-50 ms-lg-5" style="border: saddlebrown solid 3px; padding: 10px; box-shadow:  5px 1px 5px 5px green; font-family: -apple-system; font-style: italic; font-weight: 400;  " >
+    {% csrf_token %}
+    <div class="form-control form w-auto" id = "filter">
+        <label class="label" for="namefilter">Name:</label>
+        <input type="text" name = "namefilter" class="form-control form"> <br>
+
+        <label class="label" for="rollno">Roll No:</label>
+        <input type="text" name = "rollno" class="form-control form"> <br>
+
+        <label for = "collegename" class="label">College Name</label>
+        <input type="text" name = "cname" class="form-control form"> <br>
+
+        <label for = "stuprogram" class="label">Program</label>
+        <input type="text" name = "stuprogram" class="form-control form"> <br>
+
+        <label for = "adminssion_y" class="label">Year</label>
+        <input type="text" name = "adminssion_y" class="form-control form"> <br>
+
+          <label for = "Semester" class="label">Semester</label>
+        <input type="text" name = "Semester" class="form-control form"> <br>
+
+          <label for = "f_name" class="label">Father Name</label>
+        <input type="text" name = "f_name" class="form-control form"> <br>
+
+          <label for = "m_name" class="label">Mother Name</label>
+        <input type="text" name = "m_name" class="form-control form"><br>
+
+          <label for = "f_mNo" class="label">Father Mobile No</label>
+        <input type="text" name = "f_mNo" class="form-control form"> <br>
+
+          <label for = "stu_m" class="label">Student Mobile No</label>
+        <input type="text" name = "stu_m" class="form-control form"> <br>
+
+          <label for = "stu_email" class="label">Student Email</label>
+        <input type="email" name = "stu_email" class="form-control form"> <br>
+
+          <label for = "stu_photo" class="label">Student Photo</label>
+        <input type="file" name = "stu_photo" class="form-control form"> <br>
+
+        <button type="submit" class="button btn-success">Submit </button>
+        <button type="reset" class="btn-danger">Reset</button>
+        <button><a href="{% url "stuprofile_admin" %}"> Go Back </a> </button>
+        </div>
+</form>
+
+
+</center>
+
+</fieldset>
+{% endblock main-content %}

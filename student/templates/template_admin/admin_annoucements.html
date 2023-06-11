@@ -1,0 +1,36 @@
+{% extends 'template_admin/adminbash.html' %}
+{% load static %}
+{% block main-content %}
+
+
+<fieldset style="margin-top: 110px; margin-bottom: 60px">
+<form method="post" enctype="multipart/form-data" >
+{% csrf_token %}
+<div class="container" id = "Annoucementsid">
+    {% for message in messages %}
+    <div class="message {{ message.tags }}">
+        {{ message }}
+    </div>
+{% endfor %}
+    <div class="row col-sm-12">
+        <h3 class="h3">Annoucements</h3>
+    </div>
+</div>
+
+<hr style="color: #6b130d; height: 5px;">
+<div id = "annou_add" class=" col-sm-6" href="#"><a href="{% url 'upload' %}" class="col-sm-12">Add<i>&nbsp;+</i></a></div>
+{% for x in annou %}
+    <div id = "notice">
+        <div class="row col-sm-12" id = "notifications">
+            <div id = "rednotice">
+                <h6>  {{ x.description }} {{ x.upload_at }} <strong style="color: orangered"> ({{ x.upload_at }})</strong>
+                    <a href="{{ x.document.url }}" download class="btn-success" style="font: -apple-system-body; text-decoration: none; color: black; ">Download</a>
+                    <a href="{% url 'delete' x.pk %}"> Delete </a>
+{#                <button class="btn" href="{{ x.document.url }}" download ><i class="fa fa-download" href="#"></i> Download</button> </h6>#}
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</form>
+</fieldset>
+{% endblock main-content %}

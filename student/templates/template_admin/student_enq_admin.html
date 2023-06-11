@@ -1,0 +1,40 @@
+{% extends 'template_admin/adminbash.html' %}
+{% load static %}
+
+{% block main-content %}
+<fieldset style="margin-bottom: 60px" class="filed_margin">
+
+<center>
+<div class="center w-100">Latest Enquery List</div> <br>
+<hr style="color: #0b5ed7;  width: 90%; ">
+    <div class="container">
+    <div class="row col-sm-12">
+        <button class="collapsible col-sm-12" STYLE="font-family: -apple-system; text-align: center">ENQURIY LIST</button>
+        <div class="content">
+        {% for x in data %}
+        <div id = "notice">
+                <div class="row col-sm-12" id = "notifications">
+                    <div id = "rednotice">
+                        <div class="reply">
+
+                        <div id = enquiry_idDate class="col-sm-12">Enquiry Id: {{ x.id }} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Enquiry Date: {{ x.enq_date.date }}</div>
+                        <div id = text1 class="col-sm-12"><strong style="color: black">Enquiry:</strong>
+                        {{ x.Enuery_descriptin }}
+                        </div>
+                            <div id = related_from class="col-sm-12"><strong style="color: black">Query related to:</strong> {{ x.Query_related_to }}</div>
+                            <div id = uni_reply class="col-sm-12"><strong style="color: black">Univesity Reply: </strong>{{ x.college_reply }} -- <span><a href="{% url "adminreply" x.pk %}">Reply</a></span></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+        <br><br>
+    </div>
+</div>
+</div>
+
+
+</center>
+</fieldset>
+{% endblock %}

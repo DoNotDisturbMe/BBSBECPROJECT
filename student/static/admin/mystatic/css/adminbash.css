@@ -1,0 +1,93 @@
+#annou_add{
+        background-color: white;
+         text-after-overflow: hidden;
+        font-family: -apple-system;
+        margin-left: 350px;
+        margin-bottom: 20px;
+        text-align: center;
+        border-bottom-left-radius: 30px;
+        border-top-right-radius: 30px;
+        border: #5cb85c 2px solid;
+        box-shadow: 1px 1px 1px 1px;
+    }
+
+@media screen and (max-width: 450px){
+    #annou_add{
+        margin: 0px;
+    }
+
+}
+@media screen and (max-width: 768px) {
+    #annou_add{
+        margin:auto;
+        margin-bottom: 10px;
+    }
+}
+#annou_add a{
+        background-color: white;
+        text-after-overflow: hidden;
+        font-family: -apple-system;
+        word-spacing: normal;
+        text-decoration: none;
+        text-align: center;
+        border-bottom-left-radius: 30px;
+        border-top-right-radius: 30px;
+        /*border: #5cb85c 2px solid;*/
+        border: none;
+    }
+
+@media screen and (max-width: 450px) {
+    #annou_add button{
+        margin: 0px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #annou_add button{
+        margin:auto;
+        /*margin-bottom: 10px;*/
+    }
+}
+
+#annou_add a:hover{
+        background-color: #5cb85c;
+        color: white;
+        text-after-overflow: hidden;
+        font-family: -apple-system;
+        word-spacing: normal;
+        border-bottom-color: #842029;
+    }
+
+#annou_add:hover{
+        background-color: #5cb85c;
+        color: white;
+        text-after-overflow: hidden;
+        font-family: -apple-system;
+        word-spacing: normal;
+        border-bottom-color: #842029;
+    }
+
+
+/* Annocument file uploading css*/
+
+#upload_anno{
+    margin: 0px 60px 0px 60px;
+    width: 80%;
+}
+
+#upload_anno button{
+    margin-left: 30%;
+    border-color: #842029;
+    border-radius: 30px;
+    background-color: green;
+    color: darkgray;
+    font-family: -apple-system;
+    }
+#upload_anno button:hover{
+    box-shadow: #373b3e 0px 1px 1px 1px;
+    color: white;
+    font-family: -apple-system;
+
+}
+
+

@@ -1,0 +1,100 @@
+{% extends 'template_admin/adminbash.html' %}
+{% load static %}
+
+{% block main-content %}
+
+<fieldset style="margin-top: 110px; margin-bottom: 60px; height:fit-content ">
+{#data#}
+<div class="container" id = "Annoucementsid">
+{% for message in messages %}
+    <div class="message {{ message.tags }}">
+        {{ message }}
+    </div>
+{% endfor %}
+    {% for x in stu_profile %}
+    <div class="row col-sm-12">
+        <h3 class="h3">Student Profile</h3>
+    </div>
+</div>
+
+<hr style="color: #6b130d; height: 5px;">
+
+ <div id = "profile">
+     <div class="item">
+         <img src="{{ x.student_photo.url }}">
+     </div>
+ </div>
+     <div class=" row item-text" style="margin-top: 20px">
+         <div class="col-sm-12">
+         <h7>Welcome</h7><br>
+         <p>{{x.student_name}} ({{ x.student_roll_id }})</p>
+         </div>
+<hr style="color: black; height: 5px;">
+
+     </div>
+
+    <br/><br/><br/><br/><br>
+<hr style="color: black; height: 5px;">
+
+
+    <div class="profile col-sm-12" >
+        <div class="col-sm-12" style="margin: 0px " >
+            <i class="fa fa-home" style="margin-left: 20px" > <a  style="text-decoration: none; color: black; margin-left: 30px; font-weight: 400; font-family: -apple-system; font-size: 15px" href="#"> &nbsp; &nbsp; {{ x.college_name_student }}</a> </i>
+            <hr style="color: black; height: 5px;">
+        </div>
+    </div>
+
+
+     <div class="profile col-sm-12" >
+        <div class="col-sm-12" style="text-decoration: none" >
+            <i class="fa fa-dashboard" style="margin-left: 20px" > <a  style="text-decoration: none; color: black; margin-left: 30px; font-weight: 400; font-family: -apple-system; font-size: 15px" href="#"> &nbsp; &nbsp; {{ x.student_program }}</a> </i>
+            <hr style="color: black; height: 5px;">
+        </div>
+    </div>
+     <div class="profile col-sm-12" >
+        <div class="col-sm-12" style="text-decoration: none" >
+            <i class="fa fa-line-chart" style="margin-left: 20px" > <a  style="text-decoration: none; color: black; margin-left: 30px; font-weight: 400; font-family: -apple-system; font-size: 15px" href="#"> &nbsp; &nbsp; {{ x.student_admission_year }}/Normal Addmission</a> </i>
+            <hr style="color: black; height: 5px;">
+        </div>
+    </div>
+ <div class="profile col-sm-12" >
+        <div class="col-sm-12" style="text-decoration: none" >
+            <i class="fa fa-balance-scale" style="margin-left: 20px" > <a  style="text-decoration: none; color: black; margin-left: 30px; font-weight: 400; font-family: -apple-system; font-size: 15px" href="#"> &nbsp; &nbsp; {{ x.student_semester }}</a> </i>
+            <hr style="color: black; height: 5px;">
+        </div>
+    </div>
+ <div class="profile col-sm-12" >
+        <div class="col-sm-12" style="text-decoration: none" >
+            <i class="fa fa-male" style="margin-left: 20px" > <a  style="text-decoration: none; color: black; margin-left: 30px; font-weight: 400; font-family: -apple-system; font-size: 15px" href="#"> &nbsp; &nbsp; {{ x.student_father_name }} <strong>(Father Name)</strong></a> </i>
+            <hr style="color: black; height: 5px;">
+        </div>
+    </div>
+ <div class="profile col-sm-12" >
+        <div class="col-sm-12" style="text-decoration: none" >
+            <i class="fa fa-female" style="margin-left: 20px" > <a  style="text-decoration: none; color: black; margin-left: 30px; font-weight: 400; font-family: -apple-system; font-size: 15px" href="#"> &nbsp; &nbsp;{{ x.student_mother_name }} <strong>(Mother Name)</strong></a> </i>
+            <hr style="color: black; height: 5px;">
+        </div>
+    </div>
+ <div class="profile col-sm-12" >
+        <div class="col-sm-12" style="text-decoration: none" >
+            <i class="fa fa-phone" style="margin-left: 20px" > <a  style="text-decoration: none; color: black; margin-left: 30px; font-weight: 400; font-family: -apple-system; font-size: 15px" href="#"> &nbsp; &nbsp; {{ x.student_father_mobileno }} <strong>(Father Phone Nnumber)</strong></a> </i>
+            <hr style="color: black; height: 5px;">
+        </div>
+    </div>
+<div class="profile col-sm-12" >
+        <div class="col-sm-12" style="text-decoration: none" >
+            <i class="fa fa-phone" style="margin-left: 20px" > <a  style="text-decoration: none; color: black; margin-left: 30px; font-weight: 400; font-family: -apple-system; font-size: 15px" href="#"> &nbsp; &nbsp; {{ x.student_mobile_no }}</a> </i>
+            <hr style="color: black; height: 5px;">
+        </div>
+    </div>
+ <div class="profile col-sm-12" >
+        <div class="col-sm-12" style="text-decoration: none" >
+            <i class="fa fa-envelope" style="margin-left: 20px" > <a  style="text-decoration: none; color: black; margin-left: 30px; font-weight: 400; font-family: -apple-system; font-size: 15px" href="#"> &nbsp; &nbsp; {{ x.student_email_id }}</a> </i>
+            <hr style="color: black; height: 5px;">
+        </div>
+    </div>
+{% endfor %}
+</fieldset>
+{% endblock main-content %}
+
+

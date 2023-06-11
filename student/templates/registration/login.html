@@ -1,0 +1,41 @@
+{% extends 'student/bash.html' %}
+
+{#{% endif %}#}
+{% load static %}
+<fieldset style="margin: 300px;" class="filed_margin">
+{% block main-content %}
+  <style type="text/css">
+        .ex {
+            text-align: center;
+            background-image:
+            url("http://ewh.ieee.org/sb/delhi/bbsbec/images/clogo.png");
+            background-position: center;
+            background-repeat: repeat;
+            background-attachment: fixed;
+            background-size: 60px;
+        }
+    </style>
+
+
+
+<body class="ex">
+{% if  not user.is_authenticated  %}
+    <form method="post"  enctype="multipart/form-data" name = "loginform">
+{% csrf_token %}
+    <div class="singup bg-body-secondary" >
+        <label for="username" id="username_label"  >Roll Code &nbsp;</label> <br>
+        <input type="text" minlength="6" style="text-align: center" placeholder="Enter Roll Number" id="username" name="username" required pattern="\d*"> <br>
+{#        <p id = "user_info" style="margin: 0px 3px 0px 4px"> User name contain only number. pls try again !! </p>#}
+        <label for = "password1" id = "password_lable">Password: &nbsp;</label> <br>
+        <input type="text"   style="-webkit-text-security:disc; text-align: center" placeholder="Enter passwrod" name="password" id = "password" required pattern="*"><br>
+       <button type="submit" id = "singup_btn" value="Singup" >Login</button>
+        <button type="submit"  id = "singup_btn"  value="Singup" style="border-radius: 20px; "><a href="{% url 'register_student' %}" style="text-decoration: none; color: white">Singup</a></button>
+        <p id = "message" style="margin: 5px; color: red; display:none">Password Should compbination of number and alphabet !</p>
+
+    </div>
+</form>
+{% endif %}
+</body>
+{% endblock main-content %}
+
+</fieldset>

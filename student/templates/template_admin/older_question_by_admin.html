@@ -1,0 +1,30 @@
+{% extends 'template_admin/adminbash.html' %}
+{% load static %}
+
+{% block main-content %}
+<fieldset style="margin-bottom: 60px" class="filed_margin">
+
+<center>
+<div class="center w-100">Question Bank &nbsp;  <a href="{% url "addquestion" %}">Add</a> </div> <br>
+<hr style="color: #0b5ed7;  width: 90%; ">
+{% for x in pdf_question %}
+<div class="" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;    width: 25%;  border-radius: 5px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    grid-gap: 20px;">
+  <img src="{% static 'student/mystatic/image/student_photo.jpg' %}" alt="Avatar" style="width:100%;  border-radius: 5px 5px 0 0;">
+  <div class="container" style="padding: 2px 16px;">
+    <h4><b>{{ x.sub_name }}</b></h4>
+    <p>Semester: {{ x.semester }}</p>
+      <p>Branch : {{ x.branch }} </p>
+      <p>Type : {{ x.type }}</p>
+      <p>Year: {{ x.date.year }} </p>
+      <p class="col-sm-12 bg-success btn-success border-2 text-bg-primary" style="border-radius:15px; box-shadow: darkblue; text-align: center">
+          <a style="color: white; text-decoration: none; font-family: -apple-system; text-space: 1; text-align: center; " href="{{ x.sub_pdf.url }}" download>Download</a><span> &nbsp; &nbsp; &nbsp;<a style="text-decoration: none; color: white; border: 2px solid darkred ; border-radius: 15px; background-color: darkred; padding: 3px" href="{% url "deloldq" x.pk %}">Delete</a></span> </p>
+  </div>
+</div> <br> <br>
+{% endfor %}
+</center>
+</fieldset>
+{% endblock %}

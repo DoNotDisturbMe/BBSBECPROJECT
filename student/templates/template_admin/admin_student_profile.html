@@ -1,0 +1,59 @@
+{% extends 'template_admin/adminbash.html' %}
+{% load static %}
+
+{% block main-content %}
+<fieldset style="margin-bottom: 60px" class="filed_margin">
+
+<center>
+<div class="center w-100">Student List</div> <br>
+<hr style="color: #0b5ed7;  width: 90%; ">
+
+<form method="post" enctype="multipart/form-data" class="form1 w-50 h-50 ms-lg-5" >
+    {% csrf_token %}
+    <div class="form-control form w-auto" id = "filter">
+        <label class="label" for="namefilter">Name:</label>
+        <input type="text" name = "namefilter" class="form-control form"> <br>
+        <label class="label" for="rollno">Roll No:</label>
+        <input type="text" name = "rollno" class="form-control form"> <br>
+        <button type="submit" class="button btn-success">Search </button>
+        <button type="reset" class="btn-danger">Reset</button>
+        <button><a href="{% url 'stu_addadmin' %}" class="button btn-dark">Add</a></button>
+    </div>
+</form>
+
+{#Filter Data show#} <br>
+<table style="font-family: Arial, sans-serif; border-collapse: collapse; width: 95%; text-align: center">
+    <style>
+   tr:nth-child(even){
+  background-color: #dddddd;
+}
+</style>
+<tr>
+    <th style="border: 1px solid #dddddd ; padding: 8px">Roll No.</th>
+    <th style="border: 1px solid #dddddd ; padding: 8px">Name</th>
+    <th style="border: 1px solid #dddddd ; padding: 8px" >Semester</th>
+    <th style="border: 1px solid #dddddd ; padding: 8px">Batch</th>
+    <th style="border: 1px solid #dddddd ; padding: 8px">Mobile No.</th>
+    <th style="border: 1px solid #dddddd ; padding: 8px">Email</th>
+    <th style="border: 1px solid #dddddd ; padding: 8px">Mother Name</th>
+    <th style="border: 1px solid #dddddd ; padding: 8px">Father Name</th>
+    <th style="border: 1px solid #dddddd ; padding: 8px">Option</th>
+  </tr>
+{% for x in filter_profile_st %}
+<tr>
+    <td style="border: 1px solid #dddddd ; padding: 8px">{{ x.student_roll_id }}</td>
+    <td style="border: 1px solid #dddddd ; padding: 8px">{{ x.student_name }}</td>
+    <td style="border: 1px solid #dddddd ; padding: 8px">{{ x.student_semester }}</td>
+    <td style="border: 1px solid #dddddd ; padding: 8px">{{ x.student_admission_year }}</td>
+    <td style="border: 1px solid #dddddd ; padding: 8px">{{ x.student_mobile_no }}</td>
+    <td style="border: 1px solid #dddddd ; padding: 8px">{{ x.student_email_id }}</td>
+    <td style="border: 1px solid #dddddd ; padding: 8px">{{ x.student_mother_name }}</td>
+    <td style="border: 1px solid #dddddd ; padding: 8px">{{ x.student_father_name }}</td>
+    <td style="border: 1px solid #dddddd ; padding: 8px"> <a href="{% url "edit" x.pk %}">Edit &nbsp;</a><span>/ &nbsp;<a href="{% url "delete" x.pk %}" >Delete</a></span> <span> / <a href="{% url "profile" x.pk %}"> View </a></span></td>
+</tr>
+{% endfor %}
+</table>
+</center>
+</fieldset>
+
+{% endblock main-content %}

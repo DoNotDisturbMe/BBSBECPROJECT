@@ -1,0 +1,38 @@
+{% extends 'template_admin/adminbash.html' %}
+{% load static %}
+
+{% block main-content %}
+<fieldset style="margin-bottom: 60px" class="filed_margin">
+
+<center>
+<div class="center w-100">Reply Enqueriy</div> <br>
+<hr style="color: #0b5ed7;  width: 90%; ">
+
+<div class="container">
+    <div class="row col-sm-12">
+        <button class="collapsible col-sm-12" STYLE="font-family: -apple-system; text-align: center">APPROVED ANSERSHEET</button>
+        <div class="content">
+            {% for x in filter_data %}
+            <div id = "notice">
+                <div class="row col-sm-12" id = "notifications">
+                    <div id = "rednotice">
+                        <div class="reply">
+                        <div id = enquiry_idDate class="col-sm-12">Enquiry Id: {{ x.id }} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Enquiry Date: {{ x.enq_date.date }}</div>
+                        <div id = text1 class="col-sm-12"><strong style="color: black">Subject:</strong> {{ x.subject_name }} <strong style="color: red"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Semester</strong>: {{ x.semester }}
+                        </div>
+                            <div id = uni_reply class="col-sm-12"><strong style="color: black">Status: </strong> {{ x.status }}<span> <a href="{% url "answersheetupload" x.pk %}">Upload</a> </span></div>
+                            {% if x.status == "Done" %}
+                         <button id = "download1" class="btn-success" style="color: white; text-align: center; border-radius: 10px; border: white solid 3px; width: 100%"><a href="{{ x.sub_pdf.url }}" download style="color: white; text-decoration: none">Download &nbsp; <i class="fa fa-download"></i></a></button>
+                            {% endif %}
+                         </div> </div>
+                {% endfor %}
+        </div>
+    </div>
+
+</div>
+</div>
+</div>
+
+</center>
+</fieldset>
+{% endblock %}

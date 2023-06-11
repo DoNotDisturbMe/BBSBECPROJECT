@@ -1,0 +1,92 @@
+{% extends 'student/bash.html' %}
+{% load static %}
+
+{% block main-content %}
+
+<fieldset style="margin-top: 110px; margin-bottom: 60px">
+<div class="container" id = "Annoucementsid">
+    {% for message in messages %}
+    <div class="message {{ message.tags }}">
+        {{ message }}
+    </div>
+{% endfor %}
+    <div class="row col-sm-12">
+        <h3 class="h3">ENQURIY</h3>
+    </div>
+</div>
+<hr style="color: #6b130d; height: 5px;">
+
+<div class="container">
+    <div class="row col-sm-12">
+        <button class="collapsible col-sm-12" STYLE="font-family: -apple-system; text-align: center">ENQURIY ENTRY</button>
+        <div class="content">
+            <div id = "notice">
+                <div class="row col-sm-12" id = "notifications">
+                    <div id = "rednotice">
+
+
+                        <form style="width: 100%" id = "queriy" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div style="width: 100%" id="related">
+                            <select style="width: 100%; height:50px; border: 2px solid darkred; border-radius: 60px "   name = "selected_query" id = "regarding">
+                                 <option value="Prince Kumar">Select Query Related To</option>
+                                 <option value="Prince Kumar">Prince Kumar</option>
+                                  <option value="Prince Kumar">Prince Kumar</option>
+                            </select>
+                            </div>
+
+                            <div style="width: 100%" id = "type">
+                            <select name = "selected_query1" id = "regarding" style="width: 100%; height:50px; border: 2px solid darkred; border-radius: 60px ">
+                                 <option value="Prince Kumar">Select Query Type</option>
+                                 <option value="Prince Kumar">Prince Kumar</option>
+                                  <option value="Prince Kumar">Prince Kumar</option>
+                            </select>
+                            </div>
+
+                            <div style="width: 100%" id = "description" >
+                               <input placeholder="Description " name = "description" required style="width: 100%; height:50px; border: 2px solid darkred; border-radius: 60px " type="text" id = "description">
+                            </div>
+
+                            <div id = "submt_button">
+                                 <button style="margin-bottom: 10px; width: 100%" class=""><i class="fa fa-submit"></i> Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row col-sm-12">
+        <button class="collapsible col-sm-12" STYLE="font-family: -apple-system; text-align: center">ENQURIY LIST</button>
+        <div class="content">
+        {% for x in data %}
+        <div id = "notice">
+                <div class="row col-sm-12" id = "notifications">
+                    <div id = "rednotice">
+                        <div class="reply">
+
+                        <div id = enquiry_idDate class="col-sm-12">Enquiry Id: {{ x.id }} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Enquiry Date: {{ x.enq_date.date }}</div>
+                        <div id = text1 class="col-sm-12"><strong style="color: black">Enquiry:</strong>
+                        {{ x.Enuery_descriptin }}
+                        </div>
+                            <div id = related_from class="col-sm-12"><strong style="color: black">Query related to:</strong> {{ x.Query_related_to }}</div>
+                            <div id = uni_reply class="col-sm-12"><strong style="color: black">Univesity Reply: </strong>{{ x.college_reply }}</div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+        <br><br>
+    </div>
+</div>
+</div>
+</fieldset>
+{% endblock main-content %}
+
+
