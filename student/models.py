@@ -137,6 +137,17 @@ class student_progress(models.Model):
 
 
 
+#Admin Details
+class adminprofile(models.Model):
+    name = models.CharField(max_length=40)
+    collegeId = models.ForeignKey(User, max_length=10, on_delete=models.CASCADE, blank=False)
+    mobileno = models.IntegerField(max_length=12)
+    photo = models.ImageField(upload_to="adminphoto")
+
+
+
+
+
 
 
 

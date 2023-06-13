@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %} {% endblock %}</title>
+
+    <!-- CSS (BOOTSTRAP) 3.3.7 -->
+<link rel="stylesheet" href="{% static 'student/bootstrap3.3.7/css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'student/bootstrap3.3.7/css/bootstrap-theme.css' %}">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- MY CSS -->
+<link rel="stylesheet" href="{% static 'student/mystatic/css/style1.css' %}">
+<link rel="stylesheet" href="{% static 'student/mystatic/css/animate.css' %}">
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+
+<body style=" background: url({% static 'student/mystatic/image/loginimage.jpg' %}) no-repeat center center fixed;">
+
+<!-- main -->
+<nav style="background-color: white">
+    <ul class="nav nav-pills">
+  <li role="presentation" class="bg-primary"><a style="color: white" href="{% url 'student' %}">Student</a></li>
+  <li role="presentation" style="background-color: #3e8f3e"><a  style="color: white" href="{% url 'mentor' %}">Mentor</a></li>
+  <li role="presentation" style="background-color: red"><a style="color: white" href="{% url 'admin' %}">Admin</a></li>
+</ul>
+</nav>
+
+<div class="top">
+			<h1 id="title" class="hidden"><span id="logo"> Mentor <span> login</span></span></h1>
+		</div>
+		<div class="login-box animated fadeInUp">
+			<div class="box-header">
+				<h2>Mentor Login</h2>
+			</div>
+			<label for="username">Username</label>
+			<br/>
+			<input type="text" id="username">
+			<br/>
+			<label for="password">Password</label>
+			<br/>
+			<input type="password" id="password">
+			<br/>
+			<button type="submit">Sign In</button>
+			<br/>
+			<a href="#"><p class="small">Forgot your password?</p></a>
+		</div>
+</div>
+<!-- MY JS -->
+<script src="{% static 'student/mystatic/js/bash-js.js' %}"></script>
+<!-- JSQuery -->
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js" integrity="sha512-5SUkiwmm+0AiJEaCiS5nu/ZKPodeuInbQ7CiSrSnUHe11dJpQ8o4J1DU/rw4gxk/O+WBpGYAZbb8e17CDEoESw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- js (BOOTSTRAP) -->
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src  = "{% static 'student/bootstrap3.3.7/js/bootstrap.js' %}"></script>
+<script src  = "{% static 'student/bootstrap3.3.7/js/npm.js' %}"></script>
+</body>
+
+<script>
+	$(document).ready(function () {
+    	$('#logo').addClass('animated fadeInDown');
+    	$("input:text:visible:first").focus();
+	});
+	$('#username').focus(function() {
+		$('label[for="username"]').addClass('selected');
+	});
+	$('#username').blur(function() {
+		$('label[for="username"]').removeClass('selected');
+	});
+	$('#password').focus(function() {
+		$('label[for="password"]').addClass('selected');
+	});
+	$('#password').blur(function() {
+		$('label[for="password"]').removeClass('selected');
+	});
+</script>
+</html>

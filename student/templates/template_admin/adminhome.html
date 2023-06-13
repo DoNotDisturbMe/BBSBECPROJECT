@@ -13,16 +13,17 @@
     <div class="row row1">
         <div class="col-xl-5 row1-col1" style="margin-left: 10px">
            <div class="row">
-               {% for x in student_profile %}
+               {% for x in admindata %}
                <div class="col-sm-4" id = "student_photo" style="height:150px; width: 150px;">
-                   <img style="width:100%; padding: 20px; border: #6b130d 2px solid; height: 100%;" src="{{ x.student_photo.url }}">
+                   <img style="width:100%; padding: 20px; border: #6b130d 2px solid; height: 100%;" src="{{ x.photo.url }}">
                </div>
                <div class="col-sm-8 id" style="margin-left:8px">
                    <div class="col-sm-12" id = "welcome" style="margin-top: 10px;"> Wellcome</div>
-                   <div class="col-sm-12" id = "roll_no" style="margin-top: 10px"> {{ x.student_name }} ({{ x.student_roll_id }})</div>
+                   <div class="col-sm-12" id = "roll_no" style="margin-top: 10px"> {{ x.name }}</div>
+                     <div class="col-sm-12" id = "roll_no" style="margin-top: 10px"> {{ x.collegeId_id }}</div>
                </div>
-               <div class="col-sm-12 college_name" style="margin-top: 5px;"><i class="fa fa-home"><a style="text-decoration: none; color: black" href="#"> &nbsp; {{x.college_name_student }}</a></i></div>
-               <div class="col-sm-16 program" style="margin-top:5px"><i class="fa fa-certificate"><a style="text-decoration: none; color: black" href="#"> &nbsp;{{ x.student_program }}</a></i></div>
+               <div class="col-sm-12 college_name" style="margin-top: 5px;"><i class="fa-image"><a style="text-decoration: none; color: black" href="#"> &nbsp; {{x.name }}</a></i></div>
+               <div class="col-sm-16 program" style="margin-top:5px"><i class="fa fa-phone"><a style="text-decoration: none; color: black" href="#"> &nbsp;{{ x.mobileno }}</a></i></div>
                {% endfor %}
            </div>
         </div>
@@ -150,9 +151,6 @@
         </div>
 
     </div>
-
-
-
 </div>
 </fieldset>
 {% endblock main-content %}

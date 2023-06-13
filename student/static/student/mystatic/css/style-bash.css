@@ -550,7 +550,7 @@ footer a{
   color: white;
 }
 
-
+/*----------------------------------------------------------------WEcome "Section  */
 
 
 
@@ -559,10 +559,9 @@ footer a{
 margin-top:60px;
 }
 
-
 @media screen and (max-width: 450px) {
   .filed_margin{
-    margin-top: 120px;
+    margin-top: 50px;
   }
 }
 
@@ -645,6 +644,10 @@ margin-top:60px;
     overflow-x:hidden;
   }
 }
+
+
+
+
 /*--------------------------------------------------------------*/
 .row1 .row1-col2{
   margin-left: 10px;
@@ -664,22 +667,27 @@ margin-top:60px;
 
 @media screen and (max-width: 450px) {
   .row1 .row1-col2{
-    margin-left: 40px;
-    margin-bottom: 10px;
-    height: 250px;
-    width: 400px;
-    /*margin: 0px 0px 50px 15px;*/
-  }
+    margin: 10px 150px 10px 35px;
+    overflow-y: hidden;
+    overflow-x:hidden;
+    width: 94%;
+    }
+  .row1 .row1-col2::-webkit-scrollbar{
+  display: none;
+}
 }
 
 @media screen and (max-width: 1198px) {
   .row1 .row1-col2{
-    margin-left: 40px;
-    margin-bottom: 10px;
-    height: 250px;
-    width: 400px;
-    /*margin: 0px 0px 50px 15px;*/
+    margin: 10px 150px 10px 35px;
+    overflow-y: hidden;
+    overflow-x:hidden;
+    width: 94%;
+
   }
+  .row1 .row1-col2::-webkit-scrollbar{
+  display: none;
+}
 
 }
 
@@ -695,8 +703,14 @@ margin-top:60px;
 
 @media screen and (max-width: 450px) {
   .row1 .row1-col2 .hot_link{
-    /*width: 100%;*/
-    /*margin: 0px 20px 0px 20px;*/
+    width: 100%;
+    margin: 0px 50px 0px 0px;
+  }
+}
+@media screen and (max-width: 1189px) {
+  .row1 .row1-col2 .hot_link{
+    width: 100%;
+    margin: 0px 50px 0px 0px;
   }
 }
 
@@ -811,18 +825,19 @@ margin-top:60px;
 
 @media screen  and (max-width: 450px){
   .row1 .row1-col3{
-    margin: 0px 30px 0px 40px;
-    height: 250px;
-    width: 400px;
+   margin: 10px 150px 10px 35px;
+    overflow-y: hidden;
+    overflow-x:hidden;
+    width: 94%;
   }
 }
 
 @media screen  and (max-width: 1198px){
   .row1 .row1-col3{
-    margin: 0px 30px 0px 40px;
-    height: 250px;
-    width: 400px;
-
+   margin: 10px 150px 10px 35px;
+    overflow-y: hidden;
+    overflow-x:hidden;
+    width: 94%;
   }
 }
 
@@ -891,21 +906,19 @@ margin-top:60px;
 
 @media screen and (max-width: 450px) {
   .row2 .row2-col1{
-    margin: 20px 0px 0px 40px;
-    height: 250px;
-    width: 400px;
-    /*overflow-y: hidden;*/
-    /*overflow-x: hidden;*/
+  margin: 10px 150px 10px 35px;
+    overflow-y: hidden;
+    overflow-x:hidden;
+    width: 94%;
   }
 }
 
 @media screen and (max-width: 1198px) {
   .row2 .row2-col1{
-    margin: 20px 0px 0px 40px;
-    height: 250px;
-    width: 400px;
-    /*overflow-y: hidden;*/
-    /*overflow-x: hidden;*/
+   margin: 10px 150px 10px 35px;
+    overflow-y: hidden;
+    overflow-x:hidden;
+    width: 94%;
   }
 }
 
@@ -933,6 +946,7 @@ margin-top:60px;
 @media screen and (max-width: 450px) {
   .row2 .row2-col1 .row2-col1-row1 .head1{
     margin: 0px;
+    width: 100%;
   }
 }
 
@@ -940,6 +954,7 @@ margin-top:60px;
 @media screen and (max-width: 1198px)  {
   .row2 .row2-col1 .row2-col1-row1 .head1{
     margin: 0px;
+    width: 100%;
   }
 }
 
@@ -978,18 +993,20 @@ margin-top:60px;
 
 @media screen and (max-width: 450px){
   .row2  .row2-col2 .row2-col2-row1{
-    margin: 20px 0px 0px 30px;
-    height: 250px;
-    width: 400px;
+  margin: 10px 150px 10px 35px;
+    overflow-y: hidden;
+    overflow-x:hidden;
+    width: 94%;
   }
 }
 
 
 @media screen and (max-width: 1198px){
   .row2  .row2-col2 .row2-col2-row1{
-    margin: 20px 0px 0px 30px;
-    height: 250px;
-    width: 400px;
+   margin: 10px 150px 10px 35px;
+    overflow-y: hidden;
+    overflow-x:hidden;
+    width: 94%;
   }
 }
 

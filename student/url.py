@@ -38,10 +38,12 @@ urlpatterns = [
 
 
     # -------------------------------------- Admin Section  ----------------------------------
-path('login', views.loginadmin, name = "loginadmin"),   #Admin Login
+path('login', views.loginadmin, name = "loginadmin"),  #Admin Login
+path('adlogout/', views.adlogout, name = 'adlogout'),
     # ---------------------
 
 path('homeadmin', views.homeadmin, name = "homeadmin"), # Admin Home
+
 #annocument---
 path("acc_add", views.ann_admin, name = "adminannoucements"),
 path("upload", views.ann_uploade, name = "upload"),

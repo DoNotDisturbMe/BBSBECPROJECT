@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import student_profile, Annoucements, Detailed_Marks_Cards, DMC, Result_Tabulation, Enquery, answer_sheet_request, question_paper, hot_link, student_progress
+from .models import student_profile, Annoucements, Detailed_Marks_Cards, DMC, Result_Tabulation, Enquery, answer_sheet_request, question_paper, hot_link, student_progress, adminprofile
+
 
 # Register your models here.
 @admin.register(student_profile)
@@ -68,4 +69,12 @@ class student_progress_admin(admin.ModelAdmin):
         'student_name', 'student_semester',
         'student_mobile_no','student_mst1', 'student_mst2',
         'student_mst3', 'student_final_result'
+    ]
+
+
+@admin.register(adminprofile)
+class adminProfile(admin.ModelAdmin):
+    list_display = [
+    "name","collegeId",
+    "mobileno", "photo"
     ]

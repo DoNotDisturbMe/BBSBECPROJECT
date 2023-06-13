@@ -13,7 +13,7 @@ from django.urls import reverse
 from django.views import View
 from  django.urls import  reverse_lazy
 from django.views.generic.edit import CreateView
-from .models import student_profile, Annoucements, Detailed_Marks_Cards, DMC, Result_Tabulation, Enquery, answer_sheet_request, question_paper, hot_link, student_progress
+from .models import student_profile, Annoucements, Detailed_Marks_Cards, DMC, Result_Tabulation, Enquery, answer_sheet_request, question_paper, hot_link, student_progress, adminprofile
 from .form import Enquery_form
 from .decorators import login_required_with_autologout
 # Create your views here.
@@ -64,7 +64,8 @@ def student_register(request):
             return redirect('student')
     return  render(request, 'registration/register.html')
 
-@login_required_with_autologout
+
+
 def Logout(request):
     logout(request)
     return redirect('student')
@@ -73,8 +74,14 @@ def Logout(request):
 # def chagepassword(request, id):
 #     User.objects.filter(username=id).update()
 
+@login_required_with_autologout
+def adlogout(request):
+    Logout(request)
+    return redirect("loginadmin")
+
 
 #----------------------- After Login (student) ---------------------------------
+
 @login_required_with_autologout
 def user_home(request):
     user_id = request.user
@@ -225,26 +232,37 @@ def loginadmin(request):
         print(username, passweod)
         admin_login = authenticate(request, username = username, password = passweod)
         if admin_login is not None:
-            messages.info(request, "You have Successfuly login!!")
-            # time.sleep(10)
+            messages.success(request, "You have Successfuly login!!")
             login(request, admin_login)
             return redirect("homeadmin")
         else:
             messages.info(request, "Enter valid id or password? ")
-            return redirect(request, 'login')
-    return  render(request, 'template_admin/adminlogin.html')
+            return redirect(request, 'loginadmin')
+    return render(request, 'template_admin/adminlogin.html')
 
 
 
 
 # ----------------------------------------------------------------------------- Admin Section
+@login_required_with_autologout
 def homeadmin(request):
-    return render(request, "template_admin/adminhome.html")
+    uname = request.user
+    admindata = adminprofile.objects.all()
+    new_anou = Annoucements.objects.all()
+    hot_lin = hot_link.objects.all()
+    data = Enquery.objects.all().order_by("-id")
+    data = {
+        "admindata":admindata,
+        'annou': new_anou,
+        'hotlin': hot_lin,
+        'data': data,
+    }
+    return render(request, "template_admin/adminhome.html", data)
 
 
 
 # Annocument Admin --------
-
+@login_required_with_autologout
 def ann_admin(request):
     user_request = request.user
     admin_ann = Annoucements.objects.all().order_by("-id")
@@ -254,7 +272,7 @@ def ann_admin(request):
     return render(request, 'template_admin/admin_annoucements.html', data)
 # uploat annocuemetns
 
-
+@login_required_with_autologout
 def ann_uploade(request):
     if request.method == "POST":
         des = request.POST.get('description')
@@ -266,7 +284,7 @@ def ann_uploade(request):
         return redirect("adminannoucements")
     return render(request, "template_admin/annoucement_upload_admin.html")
 
-
+@login_required_with_autologout
 def delete_anno(request, id):
     edit_anno = Annoucements.objects.filter(id = id)
     edit_anno.delete()
@@ -285,7 +303,7 @@ def delete_anno(request, id):
 #
 
 # Document of Student (Admin)  -----------------------------------------------------
-
+@login_required_with_autologout
 def doc_stu_admin(request):
     # user_id = request.user
     Detailed_Marked_Card = Detailed_Marks_Cards.objects.all()
@@ -299,7 +317,7 @@ def doc_stu_admin(request):
     }
     return render(request, "template_admin/student_document_admin.html", data)
 
-
+@login_required_with_autologout
 def doc_stu_delete_admin(request, id):
     Result_Tab = Result_Tabulation.objects.filter(id = id)
     Result_Tab.delete()
@@ -308,7 +326,7 @@ def doc_stu_delete_admin(request, id):
     DMCs = DMC.objects.filter(id=id)
     DMCs.delete()
     return redirect("doc_student")
-
+@login_required_with_autologout
 def doc_stu_upload_Re_tab(request):                  #Result Upload of Retabluation..............
     if request.method == "POST":
         student_roll = request.POST.get("studentrollno")
@@ -328,7 +346,7 @@ def doc_stu_upload_Re_tab(request):                  #Result Upload of Retabluat
     return render(request, 'template_admin/Result_tab.html')
 
 
-
+@login_required_with_autologout
 def doc_stu_upload_DMCS(request):  # Detailed Marks Upload----------
     if request.method == "POST":
         student_roll = request.POST.get("studentrollno")
@@ -347,7 +365,7 @@ def doc_stu_upload_DMCS(request):  # Detailed Marks Upload----------
         return redirect("doc_student")
     return render(request, 'template_admin/DMCs_Upload.html')
 
-
+@login_required_with_autologout
 def doc_stu_upload_DMC(request):  #DMC Upload----------
     if request.method == "POST":
         student_roll = request.POST.get("studentrollno")
@@ -369,6 +387,7 @@ def doc_stu_upload_DMC(request):  #DMC Upload----------
 
 
 # Student Profile Admin section (Admin)  -----------------------------------------------------
+@login_required_with_autologout
 def stu_profile_admin(request):    #Data Exctration All Student.
     if request.method == "POST":
         name = request.POST.get("namefilter")
@@ -387,7 +406,7 @@ def stu_profile_admin(request):    #Data Exctration All Student.
         }
         return render(request, 'template_admin/admin_student_profile.html', data)
 
-
+@login_required_with_autologout
 def stu_add_admin(request): # Add Student Profile In Database.,---------------
     if request.method == "POST":
         name_stu = request.POST.get('namefilter')
@@ -418,7 +437,7 @@ def stu_add_admin(request): # Add Student Profile In Database.,---------------
 
     return  render(request, 'template_admin/add_student_admin.html')
 
-
+@login_required_with_autologout
 def view_profile_admin(request, id): #----------------- View Student profile In Detailed.
     stu_profile = student_profile.objects.filter(student_roll_id=id)
     data = {
@@ -427,13 +446,13 @@ def view_profile_admin(request, id): #----------------- View Student profile In 
     return render(request, "template_admin/viewprofileadmin.html", data)
 
 
-
+@login_required_with_autologout
 def del_profile_stu_admin(request, id):   #Delte Profile Based On the User Name....
     stu_profile = student_profile.objects.filter(student_roll_id= id)
     stu_profile.delete()
     return redirect("stuprofile_admin")
 
-
+@login_required_with_autologout
 def edit_profile_stu_admin(request, id): #Edit The profile of student.
     if request.method == "POST":
         name_stu = request.POST.get('namefilter')
@@ -470,6 +489,7 @@ def edit_profile_stu_admin(request, id): #Edit The profile of student.
 
 
 # Student Enquery Admin Section ---------------------
+@login_required_with_autologout
 def admin_reply_enq(request):              #View Query by Admin (All Query)
     data = Enquery.objects.all().order_by("-id")
     fitler_data = {
@@ -478,6 +498,7 @@ def admin_reply_enq(request):              #View Query by Admin (All Query)
     print(fitler_data)
     return render(request, "template_admin/student_enq_admin.html",fitler_data)
 
+@login_required_with_autologout
 def reply_enq_admin(request, id):
     if request.method == 'POST':
         # student_id = Enquery.student_enquiry_id      #user Id  2001308
@@ -509,6 +530,7 @@ def reply_enq_admin(request, id):
 
 
 #Answer sheet PDF Uploaded by Mentor...........
+@login_required_with_autologout
 def anssheetuploadadmin(request):
     data = answer_sheet_request.objects.all().order_by("-id")
     data1 = {
@@ -516,6 +538,7 @@ def anssheetuploadadmin(request):
     }
     return render(request, 'template_admin/admin_upload_answersheet.html', data1)
 
+@login_required_with_autologout
 def upload_ans_admin(request, id):
     if request.method == "POST":
         enq_id = request.POST.get("enq_id")
@@ -533,6 +556,7 @@ def upload_ans_admin(request, id):
 
 
 # Older Question Paper Upload By Admin------
+@login_required_with_autologout
 def admin_older_question_paper(request):   #Retrive All File from Data Base....
     data = question_paper.objects.all().order_by("id")
     dic_data = {
@@ -540,6 +564,7 @@ def admin_older_question_paper(request):   #Retrive All File from Data Base....
     }
     return  render(request, "template_admin/older_question_by_admin.html", dic_data)
 
+@login_required_with_autologout
 def admin_olderq_add(request):
     if request.method == "POST":
         user_add = request.user
@@ -558,7 +583,7 @@ def admin_olderq_add(request):
     return render(request, "template_admin/add question paper.html")
 
 
-
+@login_required_with_autologout
 def admin_oldrq_del(request, id):
     user_req_delete = question_paper.objects.filter(id= id)
     user_req_delete.delete()
